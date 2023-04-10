@@ -720,7 +720,7 @@ export const RevolutRevolutPaymentTransaction = RevolutTransactionBase.extend({
   hotelBooking: HotelBooking.optional(),
   comment: z.string().optional(),
 });
-export type RevolutRevolutPaymentTransaction = z.infer<typeof RevolutTransferTransaction>;
+export type RevolutRevolutPaymentTransaction = z.infer<typeof RevolutRevolutPaymentTransaction>;
 
 export const RevolutExchangeTransaction = RevolutTransactionBase.extend({
   type: z.literal(RevolutTransactionType.Exchange),
@@ -739,13 +739,13 @@ export const RevolutFeeTransaction = RevolutTransactionBase.extend({
   countryCode: CountryCodeEnum,
   loungePassIds: z.array(z.string().regex(revolutUuidRegex)).optional(),
 });
-export type RevolutFeeTransaction = z.infer<typeof RevolutCardPaymentTransaction>;
+export type RevolutFeeTransaction = z.infer<typeof RevolutFeeTransaction>;
 
 export const RevolutRefundTransaction = RevolutTransactionBase.extend({
   type: z.literal(RevolutTransactionType.Refund),
   description: z.string(),
 });
-export type RevolutRefundTransaction = z.infer<typeof RevolutCardPaymentTransaction>;
+export type RevolutRefundTransaction = z.infer<typeof RevolutRefundTransaction>;
 
 export const RevolutCardRefundTransaction = RevolutTransactionBase.extend({
   type: z.literal(RevolutTransactionType.CardRefund),
@@ -793,7 +793,7 @@ export const RevolutAtmTransaction = RevolutTransactionBase.extend({
   reason: z.string().optional(),
   posTime: z.number().int().positive().optional(),
 });
-export type RevolutAtmTransaction = z.infer<typeof RevolutCardPaymentTransaction>;
+export type RevolutAtmTransaction = z.infer<typeof RevolutAtmTransaction>;
 
 export const RevolutRewardTransaction = RevolutTransactionBase.extend({
   type: z.literal(RevolutTransactionType.Reward),
@@ -804,14 +804,14 @@ export const RevolutRewardTransaction = RevolutTransactionBase.extend({
   comment: z.string().optional(),
   userOfferId: z.string().regex(revolutUuidRegex).optional(),
 });
-export type RevolutRewardTransaction = z.infer<typeof RevolutCardPaymentTransaction>;
+export type RevolutRewardTransaction = z.infer<typeof RevolutRewardTransaction>;
 
 export const RevolutTradeTransaction = RevolutTransactionBase.extend({
   type: z.literal(RevolutTransactionType.Trade),
   description: z.string(),
   profusion: Profusion.optional(),
 });
-export type RevolutTradeTransaction = z.infer<typeof RevolutCardPaymentTransaction>;
+export type RevolutTradeTransaction = z.infer<typeof RevolutTradeTransaction>;
 
 export const RevolutTransaction = z.union([
   RevolutTopupTransaction,
